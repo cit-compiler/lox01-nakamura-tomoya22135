@@ -4,13 +4,14 @@ import java.util.List;
 
 abstract class Expr {
   static class Binary extends Expr {
-    Binary(Expr left,Token operator, Expr right) {
-      this.left =left;
+    Binary(Expr left, Token operator, Expr right) {
+      this.left = left;
       this.operator = operator;
       this.right = right;
     }
 
-    final Expr left,Token;
+    final Expr left;
+    final Token operator;
     final Expr right;
   }
   static class Grouping extends Expr {
