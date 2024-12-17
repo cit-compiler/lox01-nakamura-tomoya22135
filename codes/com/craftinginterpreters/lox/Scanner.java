@@ -95,7 +95,7 @@ class Scanner {
                 }else if(isAlpha(c)){
                     identifier();
                 }else{
-                Lox.error(line,"Unexpected character.");
+                    Lox.error(line,"Unexpected character.");
                 }
                 break;
         }
@@ -113,6 +113,9 @@ class Scanner {
     private void string(){
         while (peek()!='"' && !isAtEnd()){
             if(peek()=='\n') line++;
+            if (peek() == '\\' && peekNext() == '"') {
+                advance();
+            }
             advance();
         }
         if(isAtEnd()){
